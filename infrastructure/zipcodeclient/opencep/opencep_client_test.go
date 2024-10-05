@@ -14,15 +14,13 @@ func TestSearchByZipCodeWithSuccess(t *testing.T) {
 			StatusCode: 200,
 			ResponseBody: `{
 				"cep": "55026-005",
-				"logradouro": "Rua de Teste",
-				"complemento": "",
-				"bairro": "Bairro Teste",
-				"localidade": "Cidade Teste",
+				"logradouro": "Rua teste",
+				"complemento": "Teste complemento",
+				"unidade": "teste",
+				"bairro": "Bairro teste",
+				"localidade": "Caruaru",
 				"uf": "PE",
-				"ibge": "2607901",
-				"gia": "",
-				"ddd": "81",
-				"siafi": "2301"
+				"ibge": "2604106"
 			}`,
 		})
 
