@@ -1,4 +1,4 @@
-package nethttpclient
+package httpclient
 
 import "net/http"
 
