@@ -10,9 +10,10 @@ import (
 func TestSearchByZipCodeWithSuccess(t *testing.T) {
 	t.Run("Should return address when cep is valid", func(t *testing.T) {
 
-		client := NewOpenCepClient(&httpclient.MockHttpClient{
-			StatusCode: 200,
-			ResponseBody: `{
+		client := openCepClient{
+			httpClient: &httpclient.MockHttpClient{
+				StatusCode: 200,
+				ResponseBody: `{
 				"cep": "55026-005",
 				"logradouro": "Rua teste",
 				"complemento": "Teste complemento",
@@ -22,7 +23,8 @@ func TestSearchByZipCodeWithSuccess(t *testing.T) {
 				"uf": "PE",
 				"ibge": "2604106"
 			}`,
-		})
+			},
+		}
 
 		result, err := client.SearchByZipCode("55026005")
 
@@ -34,13 +36,12 @@ func TestSearchByZipCodeWithSuccess(t *testing.T) {
 
 func TestSearchByZipCodeWithStatusNotOk(t *testing.T) {
 	t.Run("Should return message with status and API response", func(t *testing.T) {
-
-		client := NewOpenCepClient(
-			&httpclient.MockHttpClient{
+		client := openCepClient{
+			httpClient: &httpclient.MockHttpClient{
 				StatusCode:   500,
 				ResponseBody: `{"erro": "true", "msg": "erro interno do servidor"}`,
 			},
-		)
+		}
 
 		result, err := client.SearchByZipCode("00000000")
 
@@ -52,13 +53,12 @@ func TestSearchByZipCodeWithStatusNotOk(t *testing.T) {
 
 func TestSearchByZipCodeWithStatusNotFound(t *testing.T) {
 	t.Run("Should return error zipcode not found", func(t *testing.T) {
-
-		client := NewOpenCepClient(
-			&httpclient.MockHttpClient{
+		client := openCepClient{
+			httpClient: &httpclient.MockHttpClient{
 				StatusCode:   404,
 				ResponseBody: `{"erro": "true"}`,
 			},
-		)
+		}
 
 		result, err := client.SearchByZipCode("00000000")
 
@@ -70,9 +70,9 @@ func TestSearchByZipCodeWithStatusNotFound(t *testing.T) {
 
 func TestSearchByZipCodeWithRequestError(t *testing.T) {
 	t.Run("Should return error when httpClient.Get fails", func(t *testing.T) {
-		client := NewOpenCepClient(
-			&httpclient.MockHttpClientWithRequestError{},
-		)
+		client := openCepClient{
+			httpClient: &httpclient.MockHttpClientWithRequestError{},
+		}
 
 		result, err := client.SearchByZipCode("55026005")
 
@@ -84,9 +84,9 @@ func TestSearchByZipCodeWithRequestError(t *testing.T) {
 
 func TestSearchByZipCodeWithReadError(t *testing.T) {
 	t.Run("Should return error when io.ReadAll fails", func(t *testing.T) {
-		client := NewOpenCepClient(
-			&httpclient.MockHttpClientWithReadError{},
-		)
+		client := openCepClient{
+			httpClient: &httpclient.MockHttpClientWithReadError{},
+		}
 
 		result, err := client.SearchByZipCode("55026005")
 
@@ -98,9 +98,9 @@ func TestSearchByZipCodeWithReadError(t *testing.T) {
 
 func TestSearchByZipCodeWithUnmarshalError(t *testing.T) {
 	t.Run("Should return error when json.Unmarshal fails", func(t *testing.T) {
-		client := NewOpenCepClient(
-			&httpclient.MockHttpClientWithUnmarshalError{},
-		)
+		client := openCepClient{
+			httpClient: &httpclient.MockHttpClientWithUnmarshalError{},
+		}
 
 		result, err := client.SearchByZipCode("55026005")
 

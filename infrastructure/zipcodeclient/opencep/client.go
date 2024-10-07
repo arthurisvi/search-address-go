@@ -7,13 +7,14 @@ import (
 	"net/http"
 	"via-cep-client/application/interfaces"
 	"via-cep-client/domain/models"
+	httpclient "via-cep-client/infrastructure/http"
 )
 
-type OpenCepClient struct {
+type openCepClient struct {
 	httpClient interfaces.HttpClient
 }
 
-func (c *OpenCepClient) SearchByZipCode(zipCode string) (*models.AddressModel, error) {
+func (c *openCepClient) SearchByZipCode(zipCode string) (*models.AddressModel, error) {
 	r, err := c.httpClient.Get(("https://opencep.com/v1/" + zipCode + ".json"))
 
 	if err != nil {
@@ -46,6 +47,6 @@ func (c *OpenCepClient) SearchByZipCode(zipCode string) (*models.AddressModel, e
 	return responseDTO.ToDomain(), nil
 }
 
-func NewOpenCepClient(c interfaces.HttpClient) *OpenCepClient {
-	return &OpenCepClient{httpClient: c}
+func NewOpenCepClient() *openCepClient {
+	return &openCepClient{httpClient: httpclient.NewNetHttpClient()}
 }

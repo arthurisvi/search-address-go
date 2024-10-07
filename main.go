@@ -3,15 +3,13 @@ package main
 import (
 	"fmt"
 	"via-cep-client/application/services"
-	nethttpclient "via-cep-client/infrastructure/http"
 	"via-cep-client/infrastructure/zipcodeclient/opencep"
 	"via-cep-client/infrastructure/zipcodeclient/viacep"
 )
 
 func main() {
-	netHttpClient := nethttpclient.NewNetHttpClient()
-	viacepClient := viacep.NewViaCepClient(netHttpClient)
-	opencepClient := opencep.NewOpenCepClient(netHttpClient)
+	viacepClient := viacep.NewViaCepClient()
+	opencepClient := opencep.NewOpenCepClient()
 
 	zipCodeServiceByViacep := services.NewZipCodeService(viacepClient)
 	responseByViacep, errByViacep := zipCodeServiceByViacep.GetAddressByZipCode("55026005")

@@ -7,13 +7,14 @@ import (
 	"net/http"
 	"via-cep-client/application/interfaces"
 	"via-cep-client/domain/models"
+	httpclient "via-cep-client/infrastructure/http"
 )
 
-type ViaCepClient struct {
+type viaCepClient struct {
 	httpClient interfaces.HttpClient
 }
 
-func (c *ViaCepClient) SearchByZipCode(zipCode string) (*models.AddressModel, error) {
+func (c *viaCepClient) SearchByZipCode(zipCode string) (*models.AddressModel, error) {
 	r, err := c.httpClient.Get(("https://viacep.com.br/ws/" + zipCode + "/json/"))
 
 	if err != nil {
@@ -46,6 +47,6 @@ func (c *ViaCepClient) SearchByZipCode(zipCode string) (*models.AddressModel, er
 	return responseDTO.ToDomain(), nil
 }
 
-func NewViaCepClient(c interfaces.HttpClient) *ViaCepClient {
-	return &ViaCepClient{httpClient: c}
+func NewViaCepClient() *viaCepClient {
+	return &viaCepClient{httpClient: httpclient.NewNetHttpClient()}
 }
