@@ -3,7 +3,7 @@ package services
 import (
 	"errors"
 	"testing"
-	"via-cep-client/domain/models"
+	"via-cep-client/internal/domain/models"
 
 	"github.com/stretchr/testify/assert"
 )

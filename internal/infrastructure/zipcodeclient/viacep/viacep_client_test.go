@@ -2,7 +2,7 @@ package viacep
 
 import (
 	"testing"
-	httpclient "via-cep-client/infrastructure/http"
+	httpclient "via-cep-client/internal/infrastructure/http"
 
 	"github.com/stretchr/testify/assert"
 )

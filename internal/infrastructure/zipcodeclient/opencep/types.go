@@ -1,6 +1,6 @@
 package opencep
 
-import "via-cep-client/domain/models"
+import "via-cep-client/internal/domain/models"
 
 type OpenCepResponseDTO struct {
 	Cep         string `json:"cep"`

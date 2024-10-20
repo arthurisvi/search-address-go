@@ -1,6 +1,6 @@
 package viacep
 
-import "via-cep-client/domain/models"
+import "via-cep-client/internal/domain/models"
 
 type ViaCepResponseDTO struct {
 	Cep         string `json:"cep"`

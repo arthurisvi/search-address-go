@@ -3,8 +3,8 @@ package services
 import (
 	"errors"
 	"regexp"
-	"via-cep-client/application/interfaces"
-	"via-cep-client/domain/models"
+	"via-cep-client/internal/domain/models"
+	"via-cep-client/internal/infrastructure/interfaces"
 )
 
 type ZipCodeService struct {
