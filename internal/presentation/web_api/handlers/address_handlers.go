@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"net/http"
-	"via-cep-client/internal/application/services"
+	"search-address-service/internal/application/services"
 
 	"github.com/gin-gonic/gin"
 )

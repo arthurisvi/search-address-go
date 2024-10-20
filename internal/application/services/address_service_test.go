@@ -2,8 +2,8 @@ package services
 
 import (
 	"errors"
+	"search-address-service/internal/domain/models"
 	"testing"
-	"via-cep-client/internal/domain/models"
 
 	"github.com/stretchr/testify/assert"
 )

@@ -2,9 +2,9 @@ package main
 
 import (
 	"log"
-	"via-cep-client/internal/application/services"
-	"via-cep-client/internal/infrastructure/zipcodeclient/viacep"
-	"via-cep-client/internal/presentation/web_api/handlers"
+	"search-address-service/internal/application/services"
+	"search-address-service/internal/infrastructure/zipcodeclient/viacep"
+	"search-address-service/internal/presentation/web_api/handlers"
 )
 
 func main() {

@@ -1,8 +1,8 @@
 package viacep
 
 import (
+	httpclient "search-address-service/internal/infrastructure/http"
 	"testing"
-	httpclient "via-cep-client/internal/infrastructure/http"
 
 	"github.com/stretchr/testify/assert"
 )

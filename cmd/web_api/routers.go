@@ -1,7 +1,7 @@
 package main
 
 import (
-	"via-cep-client/internal/presentation/web_api/handlers"
+	"search-address-service/internal/presentation/web_api/handlers"
 
 	"github.com/gin-gonic/gin"
 )

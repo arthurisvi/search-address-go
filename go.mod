@@ -1,4 +1,4 @@
-module via-cep-client
+module search-address-service
 
 go 1.22.2
 

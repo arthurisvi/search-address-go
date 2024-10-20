@@ -3,8 +3,8 @@ package services
 import (
 	"errors"
 	"regexp"
-	"via-cep-client/internal/domain/models"
-	"via-cep-client/internal/infrastructure/interfaces"
+	"search-address-service/internal/domain/models"
+	"search-address-service/internal/infrastructure/interfaces"
 )
 
 type AddressService struct {

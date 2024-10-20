@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"via-cep-client/internal/domain/models"
-	httpclient "via-cep-client/internal/infrastructure/http"
-	"via-cep-client/internal/infrastructure/interfaces"
+	"search-address-service/internal/domain/models"
+	httpclient "search-address-service/internal/infrastructure/http"
+	"search-address-service/internal/infrastructure/interfaces"
 )
 
 type openCepClient struct {
