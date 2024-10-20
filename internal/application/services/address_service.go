@@ -7,7 +7,7 @@ import (
 	"via-cep-client/internal/infrastructure/interfaces"
 )
 
-type ZipCodeService struct {
+type AddressService struct {
 	client interfaces.ZipCodeClient
 }
 
@@ -15,7 +15,7 @@ type ErrorResponseDTO struct {
 	Message string
 }
 
-func (s *ZipCodeService) GetAddressByZipCode(zipCode string) (*models.AddressModel, *ErrorResponseDTO) {
+func (s *AddressService) GetAddressByZipCode(zipCode string) (*models.AddressModel, *ErrorResponseDTO) {
 	hasError := s.validZipCode(zipCode)
 	if hasError != nil {
 		return nil, &ErrorResponseDTO{
@@ -34,7 +34,7 @@ func (s *ZipCodeService) GetAddressByZipCode(zipCode string) (*models.AddressMod
 	return address, nil
 }
 
-func (s *ZipCodeService) validZipCode(zipCode string) error {
+func (s *AddressService) validZipCode(zipCode string) error {
 	if len(zipCode) != 8 {
 		return errors.New("deve possuir 8 caracteres")
 	}
@@ -47,8 +47,8 @@ func (s *ZipCodeService) validZipCode(zipCode string) error {
 	return nil
 }
 
-func NewZipCodeService(client interfaces.ZipCodeClient) *ZipCodeService {
-	return &ZipCodeService{
+func NewAddressService(client interfaces.ZipCodeClient) *AddressService {
+	return &AddressService{
 		client: client,
 	}
 }

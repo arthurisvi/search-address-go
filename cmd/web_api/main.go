@@ -10,7 +10,7 @@ import (
 func main() {
 	viacepClient := viacep.NewViaCepClient()
 
-	addressService := services.NewZipCodeService(viacepClient)
+	addressService := services.NewAddressService(viacepClient)
 
 	addressHandlers := handlers.NewAddressHandlers(addressService)
 

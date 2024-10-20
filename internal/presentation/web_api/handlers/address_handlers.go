@@ -8,19 +8,19 @@ import (
 )
 
 type AddressHandlers struct {
-	ZipcodeService *services.ZipCodeService
+	AdressService *services.AddressService
 }
 
-func NewAddressHandlers(zipcodeService *services.ZipCodeService) *AddressHandlers {
+func NewAddressHandlers(zipcodeService *services.AddressService) *AddressHandlers {
 	return &AddressHandlers{
-		ZipcodeService: zipcodeService,
+		AdressService: zipcodeService,
 	}
 }
 
 func (z *AddressHandlers) GetAddress(c *gin.Context) {
 	zipCode := c.Param("cep")
 
-	address, err := z.ZipcodeService.GetAddressByZipCode(zipCode)
+	address, err := z.AdressService.GetAddressByZipCode(zipCode)
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "CEP não encontrado"})

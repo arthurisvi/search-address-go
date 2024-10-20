@@ -26,7 +26,7 @@ func TestGetAddressByZipCodeWithErrorFromSearchByZipCode(t *testing.T) {
 		Err:    errors.New("erro na busca: CEP não existente"),
 	}
 
-	zipCodeService := NewZipCodeService(mockClient)
+	zipCodeService := NewAddressService(mockClient)
 
 	address, err := zipCodeService.GetAddressByZipCode("99999999")
 
@@ -43,7 +43,7 @@ func TestGetAddressByZipCodeWithSuccess(t *testing.T) {
 		Err: nil,
 	}
 
-	zipCodeService := NewZipCodeService(mockClient)
+	zipCodeService := NewAddressService(mockClient)
 
 	address, err := zipCodeService.GetAddressByZipCode("55026005")
 
@@ -59,7 +59,7 @@ func TestGetAddressByZipCodeWithErrorByInvalidZipCode(t *testing.T) {
 		Err: nil,
 	}
 
-	zipCodeService := NewZipCodeService(mockClient)
+	zipCodeService := NewAddressService(mockClient)
 
 	address, err := zipCodeService.GetAddressByZipCode("5502600B")
 	address2, err2 := zipCodeService.GetAddressByZipCode("5502600")
